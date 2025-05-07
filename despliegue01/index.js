@@ -1,13 +1,14 @@
-requestAnimationFrame('dotenv').config()
-const http = require('http')
+require('dotenv').config();
+const http = require('http');
 
-function requestController(){
-    console.log('Bienvenido al curso')
+function requestController() {
+    console.log('Bienvenido al curso');
 }
 
-const server = http.createServer(http.request)
-const PORT = process.env.PORT
+const server = http.createServer(requestController);
 
-server.listen(PORT, function(){
-    console.log("Aplicacion corriendo en: " + PORT)
-})
+const PORT = process.env.PORT 
+
+server.listen(PORT, function () {
+    console.log("Aplicación corriendo en: " + PORT);
+});
