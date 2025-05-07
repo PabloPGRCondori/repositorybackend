@@ -1,14 +1,16 @@
 require('dotenv').config();
-const http = require('http');
+const express = require('express');
+const path = require('path');
 
-function requestController() {
-    console.log('Bienvenido al curso');
-}
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const server = http.createServer(requestController);
+// Servir la vista
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+});
 
-const PORT = process.env.PORT 
-
-server.listen(PORT, function () {
-    console.log("Aplicación corriendo en: " + PORT);
+// Iniciar el servidor
+app.listen(PORT, () => {
+    console.log(`Aplicación corriendo en: http://localhost:${PORT}`);
 });
